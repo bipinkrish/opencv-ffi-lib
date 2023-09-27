@@ -1,4 +1,4 @@
-Compiled OpenCV dll/so for [opencv_ffi](https://github.com/Levi-Lesches/opencv_ffi)
+Compiled OpenCV dll/so files for [opencv_ffi](https://github.com/Levi-Lesches/opencv_ffi)
 
 Date: 27/09/2023
 
