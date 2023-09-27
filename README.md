@@ -13,3 +13,8 @@ Linux Configuration:
 
 	version: Debian GLIBC 2.31-13+deb11u6
 	cmake version: 3.18.4
+
+Android Configuration:
+
+	from: [JavaCV](https://github.com/bytedeco/javacv)
+	version: 1.5.9
