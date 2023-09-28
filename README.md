@@ -18,3 +18,4 @@ Android Configuration:
 
 	from: build-android.sh
 	cmake version: 3.18.4
+	build type: Release
