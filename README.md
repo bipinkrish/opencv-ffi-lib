@@ -16,5 +16,5 @@ Linux Configuration:
 
 Android Configuration:
 
-	from: [JavaCV](https://github.com/bytedeco/javacv)
-	version: 1.5.9
+	from: build-android.sh
+	cmake version: 3.18.4
