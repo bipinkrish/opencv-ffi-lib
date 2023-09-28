@@ -53,6 +53,7 @@ for ABI in "${ANDROID_ABIS[@]}"; do
         -D BUILD_opencv_java=OFF \
         -D BUILD_TESTS=OFF \
         -D BUILD_PERF_TESTS=OFF \
+        -D CMAKE_BUILD_TYPE=Release \
         ../src/
 
     cmake --build . -j8
@@ -61,7 +62,20 @@ for ABI in "${ANDROID_ABIS[@]}"; do
     # Create ABI-specific directory in dist folder and copy .so files
     ABI_DIST_DIR="dist/$ABI"
     mkdir -p $ABI_DIST_DIR
-    cp build_$ABI/opencv/lib/*.so $ABI_DIST_DIR # the OpenCV libraries
+    
+    # Only for x86 and x86_64 since it build's link files 
+    if [[ "$ABI" == "x86_64" ]]; then
+    	# Copy only files and ignore links
+    	rm -r build_$ABI/opencv/lib/$ABI/*
+    	cp `find build_$ABI/opencv/lib/ -type f` build_$ABI/opencv/lib/$ABI/
+    	# Rename the files
+    	for file in build_$ABI/opencv/lib/$ABI/*.so.*; do
+        	new_name=$(echo "$file" | sed 's/\..*$/.so/')
+       		mv "$file" "$new_name"
+    	done
+    fi
+    
+    cp build_$ABI/opencv/lib/$ABI/*.so $ABI_DIST_DIR # the OpenCV libraries
     cp build_$ABI/*.so $ABI_DIST_DIR  # the opencv_ffi library
 done
 
@@ -75,4 +89,4 @@ echo To let your device find them, run this command:
 echo "  echo \"export LD_LIBRARY_PATH=\\\$LD_LIBRARY_PATH:$SCRIPT_DIR/dist\" >> ~/.bashrc"
 echo You only need to run this once, but run this again if you move this folder
 echo This command does not affect any open terminal shells or SSH sessions.
-echo You'll need to open a new shell or SSH again for it to take effect.
+echo You\'ll need to open a new shell or SSH again for it to take effect.
