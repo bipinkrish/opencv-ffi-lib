@@ -54,6 +54,7 @@ for ABI in "${ANDROID_ABIS[@]}"; do
         -D BUILD_TESTS=OFF \
         -D BUILD_PERF_TESTS=OFF \
         -D CMAKE_BUILD_TYPE=Release \
+        -D ANDROID_STL=c++_shared \
         ../src/
 
     cmake --build . -j8
