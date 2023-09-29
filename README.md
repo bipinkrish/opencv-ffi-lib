@@ -14,7 +14,7 @@ Linux Configuration:
 	version: Debian GLIBC 2.31-13+deb11u6
 	cmake version: 3.18.4
 
-Android Configuration:
+Android Configuration: (can't build in windows [see](https://developer.android.com/ndk/guides/other_build_systems#autoconf)) 
 
 	from: build-android.sh
 	cmake version: 3.18.4
