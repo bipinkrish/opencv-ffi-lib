@@ -1,7 +1,5 @@
 Compiled OpenCV dll/so files for [opencv_ffi](https://github.com/Levi-Lesches/opencv_ffi)
 
-Date: 27/09/2023
-
 opencv_ffi version: 1.0.2
 
 Windows Configuration:
